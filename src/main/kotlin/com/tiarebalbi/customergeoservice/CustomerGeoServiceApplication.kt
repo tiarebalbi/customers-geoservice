@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean
 @SpringBootApplication
 class CustomerGeoServiceApplication {
 
+    /**
+     * Execution bean responsible to get all customer and print in the console
+     */
     @Bean
     fun initialization(eventSelectionService: CustomerEventSelectionService): InitializingBean = InitializingBean {
         eventSelectionService.getListOfCustomersAvailable()
@@ -20,6 +23,9 @@ class CustomerGeoServiceApplication {
 
 }
 
+/**
+ * Application start-up
+ */
 fun main(args: Array<String>) {
     SpringApplication.run(CustomerGeoServiceApplication::class.java, *args)
 }

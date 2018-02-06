@@ -46,7 +46,14 @@ data class Distance(val from: Location, val to: Location, val kilometers: Double
             init()
         }
 
+        /**
+         * Location one
+         */
         private lateinit var from: Location
+
+        /**
+         * Location two
+         */
         private lateinit var to: Location
 
         /**
@@ -59,6 +66,11 @@ data class Distance(val from: Location, val to: Location, val kilometers: Double
          */
         fun to(init: Builder.() -> Location) = apply { to = init() }
 
+        /**
+         * Build method to create the Distance Object
+         *
+         * @return {@code Distance}
+         */
         fun build(): Distance = Distance(from, to, calculateDistanceBetween(from, to))
 
         /**
