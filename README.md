@@ -31,26 +31,39 @@ To execute all test you can use the following command:
    
     ./gradlew test
 
+## Building Jar file
+
+To be able to  execute the application you need to create a jar file which will contains all dependencies and logic to process your request.
+
+To build the project you need to use the command:
+
+    ./gradlew build
+
 ## Running the Project
 
 To get the list of customers available to a given location you can use the following command:
 
-    ./gradlew bootRun
+    1. Follow all steps to build the project
+    2. Copy the file located: <CURRENT PROJECT FOLDER>/build/libs/customer-geoservice-<PROJECT VERSION>.jar
+    3. Paste the jar file to your new folder
+    4. Run the command: java -jar customer-geoservice-<PROJECT VERSION>.jar
     
 Note to customize the preferences used in the application you can add the execute line above the following parameters
 
-Preference | Parameter
---- | --- 
-Latitude of the base location | -Dapplication.location.latitude={MY LATITUDE}
-Longitude of the base location | -Dapplication.location.longitude={MY LONGITUDE}
-Range used to find the customer | -Dapplication.default-range-in-km={NUMBER IN KM}
+Preference | Parameter | Is Required? | Default Value
+--- | ---  | ---  | --- 
+Latitude of the base location | --application.location.latitude={MY LATITUDE} | No | 53.339428
+Longitude of the base location | --application.location.longitude={MY LONGITUDE} | No | -6.257664
+Range used to find the customer | --application.default-range-in-km={NUMBER IN KM} | No | 100
+Customer File Location | --application.file-with-customer-list={FILE LOCATION} | Yes | -
 
 Example:
 
-    ./gradlew bootRun -Dapplication.location.latitude=52.3232 \ 
-       -Dapplication.location.longitude=-6.328382 \
-       -Dapplication.default-range-in-km=100
-
+    java -jar customer-geoservice-<PROJECT VERSION>.jar --application.location.latitude=53.339428 \
+           --application.location.longitude=-6.257664 \
+           --application.default-range-in-km=100 \
+           --application.file-with-customer-list=/Users/tiare/customers.txt
+           
 ## Built With
 
 * [Kotlin](https://kotlinlang.org/) - Kotlin Language
