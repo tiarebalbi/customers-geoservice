@@ -31,6 +31,14 @@ To execute all test you can use the following command:
    
     ./gradlew test
 
+## Building Jar file
+
+To be able to  execute the application you need to create a jar file which will contains all dependencies and logic to process your request.
+
+To build the project you need to use the command:
+
+    ./gradlew build
+
 ## Running the Project
 
 To get the list of customers available to a given location you can use the following command:
