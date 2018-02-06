@@ -13,8 +13,9 @@ class CustomerGeoServiceApplication {
     fun initialization(eventSelectionService: CustomerEventSelectionService): InitializingBean = InitializingBean {
         eventSelectionService.getListOfCustomersAvailable()
             .forEach {
-                println("Name: ${it.name} || ID: ${it.userId}")
+                println("\nName: ${it.name} || ID: ${it.userId}")
             }
+        println("\n-----\n")
     }
 
 }

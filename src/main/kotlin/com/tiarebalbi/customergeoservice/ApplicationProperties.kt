@@ -44,5 +44,5 @@ class ApplicationProperties {
     /**
      * Location of the file with all customers detail
      */
-    var fileWithCustomerList = "files/customers.txt"
+    var fileWithCustomerList: String = "classpath:files/customers.txt"
 }

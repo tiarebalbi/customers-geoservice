@@ -24,6 +24,7 @@ import net.jodah.failsafe.Failsafe
 import net.jodah.failsafe.RetryPolicy
 import org.slf4j.LoggerFactory
 import java.io.File
+import java.io.IOException
 import java.util.concurrent.Callable
 import java.util.concurrent.TimeUnit
 
@@ -54,8 +55,8 @@ class CustomerInputSource : InputSource<String, List<Customer>> {
      */
     override fun convert(input: String): List<Customer> {
         return Failsafe.with<List<Customer>>(retryPolicy)
-            .onSuccess { customers -> logger.info("Detected ${customers.size} in the file") }
-            .onFailedAttempt { t: Throwable -> onFailure(t) }
+            .onSuccess { customers -> logger.info("Detected ${customers.size} line(s) in the file") }
+            .onFailedAttempt { error: Throwable -> onFailure(error) }
             .get(Callable<List<Customer>> { readFile(input) })
     }
 
@@ -74,11 +75,17 @@ class CustomerInputSource : InputSource<String, List<Customer>> {
      */
     private fun readFile(input: String): List<Customer> {
         try {
-            return File(ClassLoader.getSystemResource(input).file).readLines()
+            val file = if (input.startsWith("files")) {
+                File(ClassLoader.getSystemResource(input).file)
+            } else {
+                File(input)
+            }
+
+            return file.readLines()
                 .map { line -> this.parseLineToCustomer(line) }
                 .sorted()
-        } catch (exception: IllegalStateException) {
-            throw InputSourceException("Unable to read the file")
+        } catch (exception: IOException) {
+            throw InputSourceException("Unable to read the file: $input")
         }
     }
 

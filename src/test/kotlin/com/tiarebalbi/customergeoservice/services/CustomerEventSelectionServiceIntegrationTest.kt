@@ -59,7 +59,7 @@ class CustomerEventSelectionServiceIntegrationTest {
 
         assertThatThrownBy { customerEventSelectionService.getListOfCustomersAvailable() }
             .isInstanceOf(InputSourceException::class.java)
-            .hasMessageContaining("Unable to read the file")
+            .hasMessageContaining("Unable to read the file: not-found.txt")
     }
 
     @Test
