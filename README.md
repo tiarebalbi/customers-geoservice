@@ -59,8 +59,8 @@ Customer File Location | --application.file-with-customer-list={FILE LOCATION} |
 
 Example:
 
-    java -jar customer-geoservice-<PROJECT VERSION>.jar --application.location.latitude=52.3232 \
-           --application.location.longitude=-6.328382 \
+    java -jar customer-geoservice-<PROJECT VERSION>.jar --application.location.latitude=53.339428 \
+           --application.location.longitude=-6.257664 \
            --application.default-range-in-km=100 \
            --application.file-with-customer-list=/Users/tiare/customers.txt
            
