@@ -50,12 +50,12 @@ To get the list of customers available to a given location you can use the follo
     
 Note to customize the preferences used in the application you can add the execute line above the following parameters
 
-Preference | Parameter
---- | --- 
-Latitude of the base location | --application.location.latitude={MY LATITUDE}
-Longitude of the base location | --application.location.longitude={MY LONGITUDE}
-Range used to find the customer | --application.default-range-in-km={NUMBER IN KM}
-Customer File Location | --application.file-with-customer-list={FILE LOCATION}
+Preference | Parameter | Is Required? | Default Value
+--- | ---  | ---  | --- 
+Latitude of the base location | --application.location.latitude={MY LATITUDE} | No | 53.339428
+Longitude of the base location | --application.location.longitude={MY LONGITUDE} | No | -6.257664
+Range used to find the customer | --application.default-range-in-km={NUMBER IN KM} | No | 100
+Customer File Location | --application.file-with-customer-list={FILE LOCATION} | Yes | -
 
 Example:
 
