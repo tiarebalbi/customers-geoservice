@@ -68,4 +68,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Tiarê Balbi Bonamini** - *Initial work* - [TiareBalbi](https://github.com/tiarebalbi)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/tiarebalbi/customers-geoservice/contributors) who participated in this project.
