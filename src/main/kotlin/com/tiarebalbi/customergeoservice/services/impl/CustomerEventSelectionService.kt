@@ -51,12 +51,11 @@ class CustomerEventSelectionService(private val applicationProperties: Applicati
         logger.info("Checking the list of customer(s) available within $distanceLimit km from the office")
 
         return customers.filter {
-            val distance = Distance.calculate {
-                from { applicationProperties.location }
-                to { Location(it.latitude, it.longitude) }
-            }
-
-            distance.kilometers <= distanceLimit
+            val distance = Distance(
+                from = applicationProperties.location,
+                to = Location(it.latitude, it.longitude)
+            )
+            distance.inKilometers <= distanceLimit
         }
     }
 }

@@ -26,59 +26,23 @@ import com.tiarebalbi.customergeoservice.extentions.toRadians
  * @since 2/5/18T9:50 PM
  * @version 0.1
  */
-data class Distance(val from: Location, val to: Location, val kilometers: Double) {
+class Distance(val from: Location, val to: Location) {
+    /**
+     * Distance from point A to B in kilometers
+     */
+    val inKilometers: Double
+
+    init {
+        inKilometers = inKilometers(from, to)
+    }
 
     companion object {
         /**
-         * Creates build interface to allow you define the initial location (from) and final location (to)
+         * Calculate the distance from one point (from) to another location (to)
          *
          * @return {@code Distance} details about the distance
          */
-        fun calculate(init: Builder.() -> Unit) = Builder(init).build()
-    }
-
-    /**
-     * Build class
-     */
-    class Builder private constructor() {
-
-        constructor(init: Builder.() -> Unit) : this() {
-            init()
-        }
-
-        /**
-         * Location one
-         */
-        private lateinit var from: Location
-
-        /**
-         * Location two
-         */
-        private lateinit var to: Location
-
-        /**
-         * Initial Location
-         */
-        fun from(init: Builder.() -> Location) = apply { from = init() }
-
-        /**
-         * Final Location
-         */
-        fun to(init: Builder.() -> Location) = apply { to = init() }
-
-        /**
-         * Build method to create the Distance Object
-         *
-         * @return {@code Distance}
-         */
-        fun build(): Distance = Distance(from, to, calculateDistanceBetween(from, to))
-
-        /**
-         * Calculate the distance from point A to B
-         *
-         * @return {@code Double} distance in kilometers
-         */
-        private fun calculateDistanceBetween(from: Location, to: Location): Double {
+        private fun inKilometers(from: Location, to: Location): Double {
             val earthRadius = 6371.0
 
             val latitudeDiff = (to.latitude - from.latitude).toRadians()
@@ -94,5 +58,29 @@ data class Distance(val from: Location, val to: Location, val kilometers: Double
 
             return earthRadius * secondSide
         }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Distance
+
+        if (from != other.from) return false
+        if (to != other.to) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = from.hashCode()
+        result = 31 * result + to.hashCode()
+        return result
+    }
+
+    override fun toString(): String {
+        return "Distance(from=$from, to=$to) {" +
+            "inKilometers=$inKilometers" +
+            "}"
     }
 }

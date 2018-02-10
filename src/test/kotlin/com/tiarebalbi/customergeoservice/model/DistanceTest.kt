@@ -30,21 +30,21 @@ class DistanceTest {
 
     @Test
     fun `should calculate the distance from two points`() {
-        val distance = Distance.calculate {
-            from { Location(52.986375, -6.043701) }
-            to { Location(51.92893, -10.27699) }
-        }
+        val distance = Distance(
+            from = Location(52.986375, -6.043701),
+            to = Location(51.386375, -5.043701)
+        )
 
-        assertThat(distance.kilometers).isCloseTo(309.92, withinPercentage(1))
+        assertThat(distance.inKilometers).isCloseTo(190.52, withinPercentage(1))
     }
 
     @Test
     fun `should have no distance between same location`() {
-        val distance = Distance.calculate {
-            from { Location(52.986375, -6.043701) }
-            to { Location(52.986375, -6.043701) }
-        }
+        val distance = Distance(
+            from = Location(52.986375, -6.043701),
+            to = Location(52.986375, -6.043701)
+        )
 
-        assertThat(distance.kilometers).isEqualTo(0.0)
+        assertThat(distance.inKilometers).isEqualTo(0.0)
     }
 }
