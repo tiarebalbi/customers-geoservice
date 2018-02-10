@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean
 class CustomerGeoServiceApplication {
 
     /**
-     * Execution bean responsible to get all customer and print in the console
+     * Printing all customers in the range defined
      */
     @Bean
     fun initialization(eventSelectionService: CustomerEventSelectionService): InitializingBean = InitializingBean {
