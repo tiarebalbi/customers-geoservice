@@ -48,7 +48,7 @@ class CustomerEventSelectionService(private val applicationProperties: Applicati
         val customers = customerInputSource.convert(applicationProperties.fileWithCustomerList)
         val distanceLimit = applicationProperties.defaultRangeInKm
 
-        logger.info("Checking the list of customer available within $distanceLimit km from the office")
+        logger.info("Checking the list of customer(s) available within $distanceLimit km from the office")
 
         return customers.filter {
             val distance = Distance.calculate {
