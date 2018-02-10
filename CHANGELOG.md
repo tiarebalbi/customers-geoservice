@@ -12,4 +12,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial implementation of the service responsible to retrieve a list of customers within a limit
 
-[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...v1.0.1
+[1.0.1]: https://github.com/tiarebalbi/customers-geoservice/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/tiarebalbi/customers-geoservice/compare/2687749cc4d581c27f1ac10b7c5b1aa01c27eba7...1.0.1
